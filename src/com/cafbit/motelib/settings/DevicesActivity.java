@@ -141,13 +141,12 @@ public class DevicesActivity extends ListActivity {
     }
 
     protected void onDeviceContextSelected(Device device, int menuItemId) {
-        switch (menuItemId) {
-        case R.id.edit:
+    	if (menuItemId == R.id.edit) {
             Intent intent = new Intent(this, AddDeviceActivity.class);
             intent.putExtra("device_id", device.id);
             startActivity(intent);          
             return;
-        case R.id.delete:
+    	} else if (menuItemId == R.id.delete) {
             try {
                 moteContext.getDeviceDao().removeDevice(device);
             } catch (Exception e) {
